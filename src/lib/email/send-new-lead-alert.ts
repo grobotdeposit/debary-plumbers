@@ -1,5 +1,5 @@
 import { createAdminClient } from "@/lib/supabase/admin";
-import { getResendClient, getEmailFrom } from "@/lib/email/resend";
+import { sendEmail } from "@/lib/email/send-email";
 import {
   buildNewLeadEmailHtml,
   getNewLeadSubject,
@@ -30,15 +30,16 @@ export async function sendNewLeadAlert(lead: Lead): Promise<void> {
   }
 
   try {
-    const resend = getResendClient();
-    await resend.emails.send({
-      from: getEmailFrom(),
+    await sendEmail({
       to,
       subject: getNewLeadSubject(lead.is_emergency),
       html: buildNewLeadEmailHtml(lead),
     });
   } catch (error) {
-    console.error("Failed to send new lead notification email:", error);
+    console.error(
+      "Failed to send new lead notification email:",
+      error instanceof Error ? error.message : error,
+    );
   }
 }
 
@@ -50,9 +51,7 @@ export async function sendForwardLeadEmail(
     "@/lib/email/templates/new-lead"
   );
 
-  const resend = getResendClient();
-  await resend.emails.send({
-    from: getEmailFrom(),
+  await sendEmail({
     to,
     subject: getForwardLeadSubject(lead),
     html: buildForwardLeadEmailHtml(lead),
