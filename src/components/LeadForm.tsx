@@ -118,7 +118,7 @@ export function LeadForm() {
       id="lead-form"
       className={`rounded-2xl border bg-surface p-6 shadow-md transition duration-200 sm:p-8 ${
         emergencyActive
-          ? "border-emergency ring-2 ring-emergency/20"
+          ? "border-priority ring-2 ring-priority/20"
           : "border-border/80"
       }`}
     >
@@ -212,9 +212,9 @@ export function LeadForm() {
         </Field>
 
         <label
-          className={`flex cursor-pointer items-start gap-3 rounded-xl border p-4 transition ${
+          className={`flex cursor-pointer items-start gap-3 rounded-xl border p-4 transition duration-200 ${
             emergencyActive
-              ? "border-emergency bg-emergency-bg"
+              ? "border-priority bg-priority-bg"
               : "border-border bg-surface-soft"
           }`}
         >
@@ -222,11 +222,11 @@ export function LeadForm() {
             type="checkbox"
             checked={form.is_emergency}
             onChange={(e) => updateField("is_emergency", e.target.checked)}
-            className="mt-1 h-5 w-5 accent-emergency"
+            className="mt-1 h-5 w-5 accent-priority"
           />
           <span>
             <span
-              className={`block font-semibold ${emergencyActive ? "text-emergency" : "text-foreground"}`}
+              className={`block font-semibold ${emergencyActive ? "text-priority" : "text-foreground"}`}
             >
               This is an emergency
             </span>

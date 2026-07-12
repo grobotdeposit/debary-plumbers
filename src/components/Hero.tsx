@@ -35,10 +35,10 @@ export function Hero() {
         </div>
         <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-border/60 bg-surface-soft shadow-md">
           <Image
-            src="/images/hero-plumber.svg"
-            alt="Licensed plumber fixing a pipe"
+            src="/images/hero-plumber.jpg"
+            alt="Licensed plumber explaining a kitchen sink repair to a homeowner"
             fill
-            className="object-cover"
+            className="object-cover object-center"
             priority
             sizes="(max-width: 1024px) 100vw, 50vw"
           />
