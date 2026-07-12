@@ -11,7 +11,10 @@ export function Footer() {
         </p>
         <p className="mt-4 text-foreground">
           Call us:{" "}
-          <a href="tel:+15551234567" className="font-semibold text-primary hover:underline">
+          <a
+            href="tel:+15551234567"
+            className="cursor-pointer font-semibold text-primary transition duration-200 hover:text-primary-light hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2"
+          >
             (555) 123-4567
           </a>
         </p>

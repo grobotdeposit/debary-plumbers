@@ -78,10 +78,23 @@ export function LeadForm() {
     return (
       <div
         id="lead-form"
-        className="rounded-2xl border border-accent/30 bg-surface p-8 text-center shadow-lg sm:p-10"
+        className="rounded-2xl border border-accent/30 bg-surface p-8 text-center shadow-md sm:p-10"
       >
-        <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent/10 text-3xl">
-          ✅
+        <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent/10 text-accent">
+          <svg
+            className="h-8 w-8"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M5 13l4 4L19 7"
+            />
+          </svg>
         </div>
         <h2 className="text-2xl font-bold text-foreground">Got it!</h2>
         <p className="mt-2 text-lg text-muted">
@@ -90,7 +103,7 @@ export function LeadForm() {
         <button
           type="button"
           onClick={() => setSuccess(false)}
-          className="mt-6 text-sm font-semibold text-primary hover:underline"
+          className="mt-6 cursor-pointer text-sm font-semibold text-primary transition duration-200 hover:text-primary-light hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2"
         >
           Submit another request
         </button>
@@ -103,10 +116,10 @@ export function LeadForm() {
   return (
     <div
       id="lead-form"
-      className={`rounded-2xl border bg-surface p-6 shadow-lg transition sm:p-8 ${
+      className={`rounded-2xl border bg-surface p-6 shadow-md transition duration-200 sm:p-8 ${
         emergencyActive
           ? "border-emergency ring-2 ring-emergency/20"
-          : "border-border"
+          : "border-border/80"
       }`}
     >
       <h2 className="text-2xl font-bold text-foreground sm:text-3xl">
@@ -233,7 +246,7 @@ export function LeadForm() {
         <button
           type="submit"
           disabled={submitting}
-          className="w-full rounded-full bg-primary py-4 text-base font-semibold text-white shadow-md transition hover:bg-primary-light disabled:cursor-not-allowed disabled:opacity-60"
+          className="btn-primary w-full py-4 text-base disabled:cursor-not-allowed disabled:opacity-60"
         >
           {submitting ? "Submitting..." : "Request a Call Back"}
         </button>
@@ -243,7 +256,7 @@ export function LeadForm() {
 }
 
 function inputClass(hasError?: string) {
-  return `w-full rounded-xl border px-4 py-3 text-base outline-none transition focus:ring-2 focus:ring-primary/30 ${
+  return `w-full rounded-xl border px-4 py-3 text-base outline-none transition duration-200 focus:ring-2 focus:ring-primary/30 ${
     hasError ? "border-emergency" : "border-border bg-surface"
   }`;
 }

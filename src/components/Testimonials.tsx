@@ -30,7 +30,7 @@ export function Testimonials() {
           {testimonials.map((t) => (
             <blockquote
               key={t.name}
-              className="rounded-2xl border border-border bg-surface p-6 shadow-sm"
+              className="rounded-2xl border border-border/80 bg-surface p-6 shadow-sm transition duration-200 hover:shadow-md"
             >
               <p className="text-muted">&ldquo;{t.quote}&rdquo;</p>
               <footer className="mt-4">
@@ -43,10 +43,7 @@ export function Testimonials() {
           ))}
         </div>
         <div className="mt-10 text-center">
-          <a
-            href="#lead-form"
-            className="inline-flex rounded-full bg-primary px-8 py-3 font-semibold text-white transition hover:bg-primary-light"
-          >
+          <a href="#lead-form" className="btn-primary px-8 py-3">
             Get Help Now
           </a>
         </div>

@@ -31,9 +31,9 @@ export function TrustBadges() {
           {badges.map((badge) => (
             <div
               key={badge.title}
-              className="rounded-2xl border border-border bg-surface p-6 shadow-sm"
+              className="rounded-2xl border border-border/80 bg-surface p-6 shadow-sm transition duration-200 hover:shadow-md"
             >
-              <div className="mb-3 inline-flex rounded-lg bg-accent/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-accent">
+              <div className="mb-3 inline-flex rounded-lg bg-accent/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-accent">
                 Trusted
               </div>
               <h3 className="font-semibold text-foreground">{badge.title}</h3>

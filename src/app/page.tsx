@@ -13,7 +13,7 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        <section className="py-12 sm:py-16">
+        <section className="py-14 sm:py-20">
           <div className="mx-auto max-w-2xl px-4 sm:px-6">
             <LeadForm />
           </div>

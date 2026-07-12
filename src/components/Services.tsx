@@ -61,7 +61,7 @@ export function Services() {
           {services.map((service) => (
             <div
               key={service.name}
-              className="rounded-2xl border border-border bg-background p-6 text-center shadow-sm transition hover:shadow-md"
+              className="cursor-default rounded-2xl border border-border/80 bg-background p-6 text-center shadow-sm transition duration-200 hover:-translate-y-0.5 hover:shadow-md"
             >
               <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary">
                 {service.icon}
@@ -72,10 +72,7 @@ export function Services() {
           ))}
         </div>
         <div className="mt-10 text-center">
-          <a
-            href="#lead-form"
-            className="inline-flex rounded-full bg-accent px-8 py-3 font-semibold text-white transition hover:bg-accent/90"
-          >
+          <a href="#lead-form" className="btn-primary px-8 py-3">
             Get Help Now
           </a>
         </div>
