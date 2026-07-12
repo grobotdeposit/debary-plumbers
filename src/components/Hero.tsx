@@ -33,12 +33,13 @@ export function Hero() {
             </a>
           </div>
         </div>
-        <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-border/60 bg-surface-soft shadow-md">
+        <div className="w-full self-center overflow-hidden rounded-2xl border border-border/60 bg-surface-soft shadow-md">
           <Image
             src="/images/hero-plumber.jpg"
             alt="Licensed plumber explaining a kitchen sink repair to a homeowner"
-            fill
-            className="object-cover object-center"
+            width={1200}
+            height={900}
+            className="block h-auto w-full"
             priority
             sizes="(max-width: 1024px) 100vw, 50vw"
           />
