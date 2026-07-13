@@ -14,5 +14,7 @@ export function getResendClient(): Resend {
 }
 
 export function getEmailFrom(): string {
-  return process.env.EMAIL_FROM ?? "onboarding@resend.dev";
+  return (
+    process.env.EMAIL_FROM ?? "Debary Plumbers <leads@debaryplumbers.com>"
+  );
 }

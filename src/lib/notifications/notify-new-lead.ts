@@ -15,4 +15,5 @@ export async function notifyNewLead(lead: Lead): Promise<void> {
     sendNewLeadEmail(lead, settings.notification_email),
     sendNewLeadSms(lead, settings.notification_phone),
   ]);
+  console.log("Lead notifications attempted for", lead.id);
 }

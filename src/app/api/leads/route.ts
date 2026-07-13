@@ -1,8 +1,10 @@
-import { NextResponse } from "next/server";
+import { after, NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { leadFormSchema } from "@/lib/validation/lead";
 import { notifyNewLead } from "@/lib/notifications/notify-new-lead";
 import type { Lead } from "@/lib/types/lead";
+
+export const maxDuration = 30;
 
 export async function POST(request: Request) {
   try {
@@ -46,8 +48,10 @@ export async function POST(request: Request) {
       );
     }
 
-    // Notification failure must never lose the lead — fire-and-forget with error logging
-    void notifyNewLead(data as Lead);
+    // Keep the function alive on Vercel until notifications finish (after uses waitUntil)
+    after(async () => {
+      await notifyNewLead(data as Lead);
+    });
 
     return NextResponse.json(
       {
