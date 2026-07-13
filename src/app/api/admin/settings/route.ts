@@ -46,6 +46,7 @@ export async function PATCH(request: Request) {
     .from("settings")
     .update({
       notification_email: parsed.data.notification_email,
+      notification_phone: parsed.data.notification_phone || null,
       updated_at: new Date().toISOString(),
     })
     .eq("id", 1)

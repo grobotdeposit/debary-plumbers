@@ -45,21 +45,28 @@ export default function Home() {
           <FAQSection faqs={HOME_FAQ} />
         </div>
       </section>
-      <section className="border-t border-border bg-surface-soft py-12">
-        <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
-          <h2 className="text-2xl font-bold text-foreground">
+      <section className="border-t border-border bg-surface-soft py-14 sm:py-16">
+        <div className="mx-auto max-w-2xl px-4 sm:px-6">
+          <h2 className="text-center text-2xl font-bold text-foreground sm:text-3xl">
             Trusted local plumbing help in DeBary
           </h2>
-          <p className="mt-4 text-muted leading-relaxed">
-            Debary Plumbers connects homeowners in DeBary, Deltona, Orange City,
-            and Volusia County with vetted, licensed plumbing professionals. Whether
-            you need an emergency plumber for a burst pipe, drain cleaning for a
-            stubborn clog, or water heater repair when you have no hot water — submit
-            the form above and get a fast callback. No waiting on hold, no hassle.
-            Our network plumbers know Central Florida homes, from aging polybutylene
-            pipes to hard-water water heater issues. Serving DeBary ZIP 32713 and
-            surrounding communities with upfront pricing and quality work.
-          </p>
+          <div className="mt-6 space-y-4 text-left text-muted leading-relaxed">
+            <p>
+              Debary Plumbers connects homeowners in DeBary, Deltona, Orange City,
+              and Volusia County with vetted, licensed plumbing professionals.
+            </p>
+            <p>
+              Whether you need an emergency plumber for a burst pipe, drain cleaning
+              for a stubborn clog, or water heater repair when you have no hot water
+              — submit the form above and get a fast callback. No waiting on hold, no
+              hassle.
+            </p>
+            <p>
+              Our network plumbers know Central Florida homes, from aging polybutylene
+              pipes to hard-water water heater issues. Serving DeBary ZIP 32713 and
+              surrounding communities with upfront pricing and quality work.
+            </p>
+          </div>
         </div>
       </section>
     </SiteLayout>

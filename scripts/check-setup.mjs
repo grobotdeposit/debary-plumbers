@@ -67,6 +67,26 @@ console.log("✓ settings table exists");
 console.log(
   `  notification_email: ${settings?.[0]?.notification_email ?? "(not set)"}`,
 );
+console.log(
+  `  notification_phone: ${settings?.[0]?.notification_phone ?? "(not set)"}`,
+);
+
+const twilioSid = env.TWILIO_ACCOUNT_SID;
+const twilioToken = env.TWILIO_AUTH_TOKEN;
+const twilioFrom = env.TWILIO_FROM_NUMBER;
+const twilioOk =
+  !!twilioSid &&
+  !twilioSid.includes("your_account") &&
+  !!twilioToken &&
+  !twilioToken.includes("your_auth") &&
+  !!twilioFrom &&
+  !twilioFrom.includes("5551234567");
+
+console.log(
+  twilioOk
+    ? "✓ Twilio SMS configured"
+    : "○ Twilio SMS not configured (optional — add TWILIO_* to .env.local)",
+);
 
 const { error: leadsError } = await sb.from("leads").select("id").limit(1);
 if (leadsError) {

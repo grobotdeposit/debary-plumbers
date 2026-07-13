@@ -38,9 +38,20 @@ export const forwardLeadSchema = z.object({
   to: z.string().trim().email("Please enter a valid email address"),
 });
 
+const phoneFieldSchema = z
+  .string()
+  .trim()
+  .refine((val) => val === "" || /^\+?[\d\s().-]{10,}$/.test(val), {
+    message: "Please enter a valid phone number",
+  })
+  .refine((val) => val === "" || (val.match(/\d/g) ?? []).length >= 10, {
+    message: "Phone number must have at least 10 digits",
+  });
+
 export const settingsUpdateSchema = z.object({
   notification_email: z
     .string()
     .trim()
     .email("Please enter a valid email address"),
+  notification_phone: phoneFieldSchema.optional().default(""),
 });

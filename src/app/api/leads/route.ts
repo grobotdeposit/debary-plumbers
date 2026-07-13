@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { leadFormSchema } from "@/lib/validation/lead";
-import { sendNewLeadAlert } from "@/lib/email/send-new-lead-alert";
+import { notifyNewLead } from "@/lib/notifications/notify-new-lead";
 import type { Lead } from "@/lib/types/lead";
 
 export async function POST(request: Request) {
@@ -46,8 +46,8 @@ export async function POST(request: Request) {
       );
     }
 
-    // Email failure must never lose the lead — fire-and-forget with error logging
-    void sendNewLeadAlert(data as Lead);
+    // Notification failure must never lose the lead — fire-and-forget with error logging
+    void notifyNewLead(data as Lead);
 
     return NextResponse.json(
       {

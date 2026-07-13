@@ -28,5 +28,6 @@ export interface Lead {
 export interface Settings {
   id: number;
   notification_email: string | null;
+  notification_phone: string | null;
   updated_at: string | null;
 }

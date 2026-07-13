@@ -20,10 +20,11 @@ create index if not exists leads_created_at_idx on public.leads (created_at desc
 create index if not exists leads_is_emergency_idx on public.leads (is_emergency desc, created_at desc);
 create index if not exists leads_status_idx on public.leads (status);
 
--- settings table: single-row config for notification email
+-- settings table: single-row config for notification email and SMS
 create table if not exists public.settings (
   id int primary key default 1 check (id = 1),
   notification_email text,
+  notification_phone text,
   updated_at timestamptz default now()
 );
 
