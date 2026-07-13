@@ -43,9 +43,14 @@ export function Testimonials() {
           ))}
         </div>
         <div className="mt-10 text-center">
-          <a href="#lead-form" className="btn-primary px-8 py-3">
+          <a href="/contact#lead-form" className="btn-primary px-8 py-3">
             Get Help Now
           </a>
+          <p className="mt-4">
+            <a href="/reviews" className="text-sm font-medium text-primary hover:underline">
+              Read more customer reviews →
+            </a>
+          </p>
         </div>
       </div>
     </section>

@@ -16,32 +16,25 @@ const openSans = Open_Sans({
 });
 
 export const metadata: Metadata = {
-  title: `${SITE_NAME} — Fast, Affordable Local Plumbing`,
-  description:
-    "Need a plumber in DeBary fast? Submit your info and get a call back ASAP. Leaks, clogs, water heaters, emergencies — Debary Plumbers connects you with local pros.",
-  icons: {
-    icon: "/favicon.svg",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: `${SITE_NAME} — Fast, Affordable Local Plumbing`,
+    template: `%s | ${SITE_NAME}`,
   },
+  description:
+    "Need a plumber in DeBary, FL? Submit your info and get a call back ASAP. Licensed local plumbers serving Volusia County.",
+  icons: { icon: "/favicon.svg" },
   openGraph: {
-    title: `${SITE_NAME} — Get a Plumber to Call You Back`,
-    description:
-      "Fast, affordable local plumbing in DeBary and Volusia County. Submit the form and someone will reach out ASAP.",
-    url: SITE_URL,
     siteName: SITE_NAME,
     locale: "en_US",
     type: "website",
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html
       lang="en"

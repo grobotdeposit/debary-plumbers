@@ -14,11 +14,12 @@ export function Hero() {
             DeBary&apos;s trusted plumbing help
           </p>
           <h1 className="text-4xl font-bold leading-tight tracking-tight text-foreground sm:text-5xl">
-            Affordable plumbing in DeBary when you need it most
+            DeBary&apos;s Fast, Affordable Plumbing Help
           </h1>
           <p className="mt-5 text-lg leading-relaxed text-muted sm:text-xl">
-            Fast, affordable local plumbing — get a call back ASAP. Submit your
-            info and someone will get back to you right away.
+            Need a plumber in DeBary, FL? Submit your info and a licensed local
+            pro will call you back ASAP — emergencies, leaks, clogs, water
+            heaters, and more.
           </p>
           <p className="mt-4 text-sm text-muted">{SERVICE_AREA}</p>
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
@@ -36,7 +37,7 @@ export function Hero() {
         <div className="w-full self-center overflow-hidden rounded-2xl border border-border/60 bg-surface-soft shadow-md">
           <Image
             src="/images/hero-plumber.jpg"
-            alt="Licensed plumber explaining a kitchen sink repair to a homeowner"
+            alt="Licensed plumber in DeBary, FL explaining a kitchen sink repair to a homeowner"
             width={1200}
             height={900}
             className="block h-auto w-full"
