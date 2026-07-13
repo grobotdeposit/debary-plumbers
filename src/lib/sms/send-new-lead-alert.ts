@@ -12,7 +12,7 @@ export async function sendNewLeadSms(
 
   if (!isTwilioConfigured()) {
     console.error(
-      "SMS skipped: Twilio env vars not configured (TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_FROM_NUMBER)",
+      "SMS skipped: Twilio env vars not configured (TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, and TWILIO_MESSAGING_SERVICE_SID or TWILIO_FROM_NUMBER)",
     );
     return;
   }

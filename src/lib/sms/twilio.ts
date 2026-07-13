@@ -22,11 +22,13 @@ export function toE164(phone: string): string | null {
 }
 
 export function isTwilioConfigured(): boolean {
-  return !!(
-    process.env.TWILIO_ACCOUNT_SID &&
-    process.env.TWILIO_AUTH_TOKEN &&
-    process.env.TWILIO_FROM_NUMBER
+  const hasAuth = !!(
+    process.env.TWILIO_ACCOUNT_SID && process.env.TWILIO_AUTH_TOKEN
   );
+  const hasSender = !!(
+    process.env.TWILIO_MESSAGING_SERVICE_SID || process.env.TWILIO_FROM_NUMBER
+  );
+  return hasAuth && hasSender;
 }
 
 type SendSmsInput = {
@@ -38,10 +40,17 @@ export async function sendSms({ to, body }: SendSmsInput): Promise<void> {
   const accountSid = process.env.TWILIO_ACCOUNT_SID;
   const authToken = process.env.TWILIO_AUTH_TOKEN;
   const from = process.env.TWILIO_FROM_NUMBER;
+  const messagingServiceSid = process.env.TWILIO_MESSAGING_SERVICE_SID;
 
-  if (!accountSid || !authToken || !from) {
+  if (!accountSid || !authToken) {
     throw new Error(
-      "Twilio is not configured. Set TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, and TWILIO_FROM_NUMBER.",
+      "Twilio is not configured. Set TWILIO_ACCOUNT_SID and TWILIO_AUTH_TOKEN.",
+    );
+  }
+
+  if (!messagingServiceSid && !from) {
+    throw new Error(
+      "Twilio sender is not configured. Set TWILIO_MESSAGING_SERVICE_SID (recommended for US 10DLC) or TWILIO_FROM_NUMBER.",
     );
   }
 
@@ -50,7 +59,17 @@ export async function sendSms({ to, body }: SendSmsInput): Promise<void> {
     throw new Error(`Invalid notification phone number: ${to}`);
   }
 
-  const fromE164 = toE164(from) ?? from;
+  const params = new URLSearchParams({
+    To: toE164Number,
+    Body: body,
+  });
+
+  if (messagingServiceSid) {
+    params.set("MessagingServiceSid", messagingServiceSid);
+  } else {
+    const fromE164 = toE164(from!) ?? from!;
+    params.set("From", fromE164);
+  }
 
   const response = await fetch(
     `https://api.twilio.com/2010-04-01/Accounts/${accountSid}/Messages.json`,
@@ -60,16 +79,20 @@ export async function sendSms({ to, body }: SendSmsInput): Promise<void> {
         Authorization: `Basic ${Buffer.from(`${accountSid}:${authToken}`).toString("base64")}`,
         "Content-Type": "application/x-www-form-urlencoded",
       },
-      body: new URLSearchParams({
-        To: toE164Number,
-        From: fromE164,
-        Body: body,
-      }),
+      body: params,
     },
   );
 
+  const responseBody = await response.text();
+
   if (!response.ok) {
-    const errorBody = await response.text();
-    throw new Error(`Twilio SMS failed (${response.status}): ${errorBody}`);
+    throw new Error(`Twilio SMS failed (${response.status}): ${responseBody}`);
+  }
+
+  try {
+    const parsed = JSON.parse(responseBody) as { sid?: string; status?: string };
+    console.log("Twilio SMS queued:", parsed.sid, parsed.status);
+  } catch {
+    // Non-JSON success bodies are fine; delivery status is checked asynchronously.
   }
 }

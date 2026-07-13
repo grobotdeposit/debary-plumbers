@@ -36,7 +36,12 @@ foreach ($name in $required) {
   npx vercel env add $name --value $vars[$name] --yes --force 2>&1 | Out-Host
 }
 
-$optional = @("TWILIO_ACCOUNT_SID", "TWILIO_AUTH_TOKEN", "TWILIO_FROM_NUMBER")
+$optional = @(
+  "TWILIO_ACCOUNT_SID",
+  "TWILIO_AUTH_TOKEN",
+  "TWILIO_FROM_NUMBER",
+  "TWILIO_MESSAGING_SERVICE_SID"
+)
 foreach ($name in $optional) {
   if ($vars.ContainsKey($name) -and -not [string]::IsNullOrWhiteSpace($vars[$name]) -and $vars[$name] -notmatch "your_") {
     Write-Host "Adding $name (optional)..."
