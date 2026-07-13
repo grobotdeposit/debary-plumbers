@@ -1,8 +1,6 @@
 export const SITE_NAME = "Debary Plumbers";
 export const SITE_DOMAIN = "debaryplumbers.com";
 export const SITE_URL = `https://${SITE_DOMAIN}`;
-export const SITE_PHONE = "(555) 123-4567";
-export const SITE_PHONE_TEL = "+15551234567";
 export const SITE_EMAIL = "leads@debaryplumbers.com";
 
 export const SERVICE_AREA =

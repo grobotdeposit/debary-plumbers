@@ -9,14 +9,12 @@ import {
   SERVICE_AREA,
   SITE_EMAIL,
   SITE_NAME,
-  SITE_PHONE,
-  SITE_PHONE_TEL,
 } from "@/lib/site";
 
 export const metadata = buildPageMetadata({
   title: "Contact Debary Plumbers | Get a Fast Plumbing Callback",
   description:
-    "Contact Debary Plumbers for fast plumbing help in DeBary, FL and Volusia County. Submit the form or call for emergency and routine plumbing service.",
+    "Contact Debary Plumbers for fast plumbing help in DeBary, FL and Volusia County. Submit the form for emergency and routine plumbing service.",
   path: "/contact",
 });
 
@@ -40,12 +38,6 @@ export default function ContactPage() {
         </p>
 
         <div className="mt-8 grid gap-6 sm:grid-cols-2">
-          <div className="rounded-xl border border-border/80 bg-surface-soft p-5">
-            <h2 className="font-semibold text-foreground">Phone</h2>
-            <a href={`tel:${SITE_PHONE_TEL}`} className="mt-1 block text-primary hover:underline">
-              {SITE_PHONE}
-            </a>
-          </div>
           <div className="rounded-xl border border-border/80 bg-surface-soft p-5">
             <h2 className="font-semibold text-foreground">Email</h2>
             <a href={`mailto:${SITE_EMAIL}`} className="mt-1 block text-primary hover:underline">

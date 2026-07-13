@@ -3,8 +3,6 @@ import {
   SERVICE_AREA,
   SITE_EMAIL,
   SITE_NAME,
-  SITE_PHONE,
-  SITE_PHONE_TEL,
 } from "@/lib/site";
 import { SERVICES } from "@/lib/seo/services";
 import { AREAS } from "@/lib/seo/areas";
@@ -16,12 +14,7 @@ export function Footer() {
         <div>
           <p className="text-lg font-bold text-primary">{SITE_NAME}</p>
           <p className="mt-2 text-sm text-muted">{SERVICE_AREA}</p>
-          <p className="mt-4 text-sm text-foreground">
-            <a href={`tel:${SITE_PHONE_TEL}`} className="font-semibold text-primary hover:underline">
-              {SITE_PHONE}
-            </a>
-          </p>
-          <p className="mt-1 text-sm">
+          <p className="mt-4 text-sm">
             <a href={`mailto:${SITE_EMAIL}`} className="text-primary hover:underline">
               {SITE_EMAIL}
             </a>

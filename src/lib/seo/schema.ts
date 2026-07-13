@@ -3,8 +3,6 @@ import {
   BUSINESS_HOURS,
   SITE_EMAIL,
   SITE_NAME,
-  SITE_PHONE,
-  SITE_PHONE_TEL,
   SITE_URL,
 } from "@/lib/site";
 
@@ -18,7 +16,6 @@ export function localBusinessSchema() {
     "@type": "Plumber",
     name: SITE_NAME,
     url: SITE_URL,
-    telephone: SITE_PHONE,
     email: SITE_EMAIL,
     description: BUSINESS_DESCRIPTION,
     image: `${SITE_URL}/images/hero-plumber.jpg`,
@@ -56,7 +53,8 @@ export function localBusinessSchema() {
     },
     contactPoint: {
       "@type": "ContactPoint",
-      telephone: SITE_PHONE_TEL,
+      email: SITE_EMAIL,
+      url: `${SITE_URL}/contact`,
       contactType: "customer service",
       areaServed: "US-FL",
       availableLanguage: "English",
@@ -90,7 +88,7 @@ export function serviceSchema(name: string, description: string, area: string) {
       "@type": "Plumber",
       name: SITE_NAME,
       url: SITE_URL,
-      telephone: SITE_PHONE,
+      email: SITE_EMAIL,
     },
     areaServed: {
       "@type": "City",
